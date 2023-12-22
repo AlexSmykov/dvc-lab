@@ -202,7 +202,7 @@ scores = {"Accuracy": score[1], "Precision": score[2], "Recall": score[3], "AUC"
 # In[ ]:
 
 
-model.save("./models/third_model.h5")
+model.save("./models/model.h5")
 
 
 # In[ ]:
