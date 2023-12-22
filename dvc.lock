@@ -5,30 +5,30 @@ stages:
     deps:
     - path: data
       hash: md5
-      md5: 88a009b7ea282c07e7a8c148569bc6d2.dir
-      size: 1166924409
-      nfiles: 20000
+      md5: 9f6c4e8346d099f456ec52103ea2dded.dir
+      size: 756165668
+      nfiles: 12011
     - path: processing.ipynb
       hash: md5
-      md5: a1dddcd9337fbb0c1890fae66d70cd30
-      size: 5715
+      md5: 255321f93114d067f319be993fe3abdd
+      size: 5658
     outs:
     - path: processing.py
       hash: md5
       md5: 3ed44a08ad8a786d2c6e47be1d1dc0f0
       size: 2618
   model_conv:
-    cmd: jupyter nbconvert model_3.ipynb --to python
+    cmd: jupyter nbconvert model.ipynb --to python
     deps:
-    - path: model_3.ipynb
+    - path: model.ipynb
       hash: md5
-      md5: 9acf6c69d8383f65051a7d02092abc9d
-      size: 8323
+      md5: 4d525a1cc6bb47178f41225f9a644308
+      size: 8127
     outs:
-    - path: model_3.py
+    - path: model.py
       hash: md5
-      md5: 7893f686df7f0201e4601b1c6fd971a1
-      size: 4402
+      md5: 6b5e4877bf5d342188c0db4c7a3d56e5
+      size: 4396
   make_csv:
     cmd: python processing.py
     deps:
@@ -39,16 +39,16 @@ stages:
     outs:
     - path: csv_storage/test.csv
       hash: md5
-      md5: 40a0879fa31dba914f0e8fec629b8d94
-      size: 161137
+      md5: 71869c68102eff6f6569240bb7b0c556
+      size: 35797
     - path: csv_storage/train.csv
       hash: md5
-      md5: 8ea1d89426939494ee107964a9851f21
-      size: 465137
+      md5: e44ec4d6c59c388d46651ae77d25364c
+      size: 102797
     - path: csv_storage/valid.csv
       hash: md5
-      md5: a77cc63f1c52ede964a282bd61c20b33
-      size: 161137
+      md5: 0684c0e88418030b3fd45947efc9b2b5
+      size: 35797
   third_model:
     cmd: python model_3.py
     deps:

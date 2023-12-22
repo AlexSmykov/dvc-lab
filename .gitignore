@@ -3,3 +3,5 @@
 /csv_storage/train.csv
 /csv_storage/valid.csv
 /csv_storage/test.csv
+/processing.py
+/model.py
