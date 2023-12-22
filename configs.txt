@@ -1,0 +1,20 @@
+dvc run --force \ 
+-n process \
+-d process.py -d data \
+-o output/out1 \
+-p process.value \
+python3 process.py \
+
+dvc add data
+
+dvc stage add -f -n file_conv -d processing.ipynb -d data -o processing.py \
+jupyter nbconvert processing.ipynb --to python
+
+dvc stage add -f -n model_conv -d model.ipynb -o model.py \
+jupyter nbconvert model.ipynb --to python
+
+dvc stage add -f -n make_csv -d processing.py -o csv_storage/train.csv \
+-o csv_storage/valid.csv -o csv_storage/test.csv python processing.py
+
+dvc stage add -f -n third_model -d model.py -d csv_storage -M scores.json \
+-o models/third_model.h5 python model.py

@@ -1,0 +1,32 @@
+stages:
+  file_conv:
+    cmd: jupyter nbconvert processing.ipynb --to python
+    deps:
+    - data
+    - processing.ipynb
+    outs:
+    - processing.py
+  model_conv:
+    cmd: jupyter nbconvert model.ipynb --to python
+    deps:
+    - model.ipynb
+    outs:
+    - model.py
+  make_csv:
+    cmd: python processing.py
+    deps:
+    - processing.py
+    outs:
+    - csv_storage/test.csv
+    - csv_storage/train.csv
+    - csv_storage/valid.csv
+  third_model:
+    cmd: python model.py
+    deps:
+    - csv_storage
+    - model.py
+    outs:
+    - models/third_model.h5
+    metrics:
+    - scores.json:
+        cache: false

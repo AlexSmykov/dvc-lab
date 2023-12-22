@@ -1,0 +1,8 @@
+train:
+    epochs: 5
+    batch: 128
+    patience: 3
+
+model:
+    dropout: 0.5
+    dense: 32
